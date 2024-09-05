@@ -1,13 +1,10 @@
-import xyz.jpenilla.resourcefactory.bukkit.BukkitPluginYaml
-
 plugins {
   `java-library`
   id("io.papermc.paperweight.userdev") version "1.7.2"
   id("xyz.jpenilla.run-paper") version "2.3.0" // Adds runServer and runMojangMappedServer tasks for testing
-  id("xyz.jpenilla.resource-factory-bukkit-convention") version "1.1.1" // Generates plugin.yml based on the Gradle config
 }
 
-group = "de.jothapunkt.spigot"
+group = "com.jothapunkt.spigot"
 version = "1.0.0-SNAPSHOT"
 description = "Core library"
 
@@ -48,52 +45,5 @@ tasks {
     // This is an example of how you might change the output location for reobfJar. It's recommended not to do this
     // for a variety of reasons, however it's asked frequently enough that an example of how to do it is included here.
     outputJar = layout.buildDirectory.file("../../server/plugins/raftcraft-${project.version}.jar")
-  }
-}
-
-// Configure plugin.yml generation
-// - name, version, and description are inherited from the Gradle project.
-bukkitPluginYaml {
-  main = "de.jothapunkt.spigot.raftcraft.RaftCraft"
-  load = BukkitPluginYaml.PluginLoadOrder.STARTUP
-  authors.add("Jothapunkt")
-  apiVersion = "1.21"
-
-  commands {
-    register("flotsam") {
-      description = "Spawn flotsam"
-      usage = "/flotsam"
-      permission = "raftcraft.flotsam"
-    }
-    register("raft") {
-      description = "Manage rafts"
-      usage = "/raft"
-      permission = "raftcraft.raft"
-    }
-    register("worlds") {
-      description = "Manage worlds"
-      usage = "/worlds"
-      permission = "raftcraft.worlds"
-    }
-    register("dungeons") {
-      description = "Manage dungeons"
-      usage = "/dungeons"
-      permission = "raftcraft.dungeons"
-    }
-    register("mounts") {
-      description = "Spawn and manage mounts"
-      usage = "/mounts"
-      permission = "raftcraft.mounts"
-    }
-    register("skills") {
-      description = "Manage skills"
-      usage = "/skills"
-      permission = "raftcraft.skills"
-    }
-    register("spawn") {
-      description = "Spawn creatures"
-      usage = "/spawn"
-      permission = "raftcraft.spawn"
-    }
   }
 }
