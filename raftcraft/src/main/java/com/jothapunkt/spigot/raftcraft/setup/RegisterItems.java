@@ -1,5 +1,7 @@
 package com.jothapunkt.spigot.raftcraft.setup;
 
+import com.jothapunkt.spigot.raftcraft.items.menu.MenuItem;
+import com.jothapunkt.spigot.raftcraft.items.menu.MountControlItem;
 import com.jothapunkt.spigot.raftcraft.items.swords.Claymore;
 import com.jothapunkt.spigot.raftcraft.items.wands.IceStaff;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
@@ -10,5 +12,7 @@ public class RegisterItems {
 
         registry.register(new Claymore());
         registry.register(new IceStaff());
+        registry.register(new MenuItem());
+        registry.register(new MountControlItem());
     }
 }

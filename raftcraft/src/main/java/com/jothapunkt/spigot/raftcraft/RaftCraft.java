@@ -32,6 +32,7 @@ import com.jothapunkt.spigot.raftcraft.types.Wind;
 import com.jothapunkt.spigot.raftcraft.util.Initializers;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 import com.jothapunkt.spigot.raftcraft.recipes.crafting.CraftingRecipes;
+import com.jothapunkt.spigot.raftcraft.setup.RegisterItems;
 import com.jothapunkt.spigot.raftcraft.setup.RegisterMobs;
 
 
@@ -83,6 +84,7 @@ public class RaftCraft extends JavaPlugin {
         // Register custom classes, do general setup
         CraftingRecipes.register();
         RegisterMobs.register();
+        RegisterItems.register();
     }
 
     @Override

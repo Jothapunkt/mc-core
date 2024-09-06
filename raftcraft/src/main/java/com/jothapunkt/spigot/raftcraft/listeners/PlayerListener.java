@@ -3,12 +3,15 @@ package com.jothapunkt.spigot.raftcraft.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
@@ -17,6 +20,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
+import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
+import com.jothapunkt.spigot.raftcraft.items.generic.FixedPositionItem;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.modifiers.effects.CustomEffect;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
@@ -83,6 +89,16 @@ public class PlayerListener implements Listener {
             if (MobRegistry.get(event.getVehicle()) instanceof Mount mount) {
                 mount.onDismount(event);
             }
+        }
+    }
+
+    // Prevent interacting with menu items and other unmovable items
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onInventoryClick(InventoryClickEvent event) {
+        CustomItem clickedItem = ItemRegistry.get(event.getCurrentItem());
+        Bukkit.broadcastMessage("Clicked item " + clickedItem.getKey());
+        if (clickedItem instanceof FixedPositionItem) {
+            event.setCancelled(true);
         }
     }
 }

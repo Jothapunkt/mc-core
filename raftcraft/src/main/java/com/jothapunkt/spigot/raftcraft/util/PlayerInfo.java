@@ -23,6 +23,7 @@ import com.jothapunkt.spigot.raftcraft.gui.generic.GUI;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.modifiers.effects.CustomEffect;
+import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.types.DamageType;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
@@ -132,6 +133,14 @@ public class PlayerInfo {
                 m.setStat(stat.getKey(), stat.getValue());
             }
         }
+    }
+
+    public Mount getMount() {
+        if (CustomClassRegistry.getInstance().get(player.getVehicle()) instanceof Mount mount) {
+            return mount;
+        }
+
+        return null;
     }
 
     public double getMeleeDamage() {
