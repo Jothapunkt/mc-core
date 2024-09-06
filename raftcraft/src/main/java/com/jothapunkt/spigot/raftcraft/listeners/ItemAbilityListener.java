@@ -32,6 +32,8 @@ public class ItemAbilityListener implements Listener {
         if (heldCustomItem == null) {
             event.getPlayer().sendMessage("Not holding a custom item");
             return;
+        } else {
+            event.getPlayer().sendMessage("Holding: " + heldCustomItem.getKey());
         }
 
         if (List.of(Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK).contains(event.getAction())) {

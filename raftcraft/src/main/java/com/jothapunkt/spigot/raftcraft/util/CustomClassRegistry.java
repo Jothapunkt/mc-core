@@ -8,10 +8,12 @@ import javax.management.openmbean.KeyAlreadyExistsException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+
 
 public class CustomClassRegistry {
     private static CustomClassRegistry instance = null;
@@ -37,7 +39,19 @@ public class CustomClassRegistry {
         registry.put(key, instance);
     }
 
+    public CustomClass get(ItemStack item) {
+        if (item == null) {
+            return null;
+        }
+
+        return get(item.getItemMeta());
+    }
+
     public CustomClass get(PersistentDataHolder instance) {
+        if (instance == null) {
+            return null;
+        }
+        
         if (instance.getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "custom_class"))) {
             String key = instance.getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "custom_class"), PersistentDataType.STRING);
             return registry.get(key);

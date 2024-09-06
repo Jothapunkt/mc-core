@@ -17,7 +17,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.modifiers.effects.CustomEffect;
+import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.rafts.Raft;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 
@@ -78,7 +80,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onDismount(VehicleExitEvent event) {
         if (event.getExited() instanceof Player) {
-            event.getVehicle().remove();
+            if (MobRegistry.get(event.getVehicle()) instanceof Mount mount) {
+                mount.onDismount(event);
+            }
         }
     }
 }

@@ -13,8 +13,6 @@ import com.jothapunkt.spigot.raftcraft.types.Stat;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
 public class IceKing extends CustomMob {
-    static {CustomClassRegistry.getInstance().register(new IceKing());}
-
     public IceKing() {
         super();
         

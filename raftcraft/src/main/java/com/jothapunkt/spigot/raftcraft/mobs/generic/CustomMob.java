@@ -2,7 +2,6 @@ package com.jothapunkt.spigot.raftcraft.mobs.generic;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
-import com.jothapunkt.spigot.raftcraft.items.CustomItemIdentifier;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
 import com.jothapunkt.spigot.raftcraft.types.Rarity;

@@ -12,7 +12,7 @@ public class VanillaItem extends CustomItem {
     }
 
     @Override
-    public String getIdentifer() {
+    public String getKey() {
         return baseItem.getType().name();
     }
 }

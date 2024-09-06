@@ -26,10 +26,8 @@ public class MobRegistry {
         }
 
         name = string.toUpperCase().replace(" ", "");
-        Bukkit.broadcastMessage("Looking for: " + name);
 
         for (CustomMob mob : CustomClassRegistry.getInstance().getSubClasses(CustomMob.class)) {
-            Bukkit.broadcastMessage(mob.getClass().getSimpleName());
             if (name.equalsIgnoreCase(mob.getClass().getSimpleName())) {
                 return mob;
             }
@@ -45,8 +43,8 @@ public class MobRegistry {
 
         CustomClass entry = CustomClassRegistry.getInstance().get(entity);
         
-        if (entry instanceof CustomMob) {
-            return (CustomMob) entry;
+        if (entry instanceof CustomMob customMob) {
+            return customMob;
         }
 
         if (entry == null) {

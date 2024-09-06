@@ -81,6 +81,7 @@ public class CommandFlotsam implements CommandExecutor {
             CustomItem item = ItemRegistry.get(search);
 
             if (item != null) {
+                player.sendMessage("Giving you " + item.getKey());
                 player.getInventory().addItem(item.print());
             } else {
                 player.sendMessage("Unknown Item: " + search);

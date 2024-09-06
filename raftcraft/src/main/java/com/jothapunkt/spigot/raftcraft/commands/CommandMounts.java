@@ -12,6 +12,7 @@ import com.jothapunkt.spigot.raftcraft.errors.BaseError;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.util.Worlds;
 import com.jothapunkt.spigot.raftcraft.util.GameRules;
+import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 
@@ -33,7 +34,7 @@ public class CommandMounts implements CommandExecutor {
         }
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("summon")) {
-            new Mount(MobRegistry.get("Pig")).summon(player);
+            new PigMount().summon(player);
             return true;
         }
 

@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.List;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
-import com.jothapunkt.spigot.raftcraft.items.CustomItemIdentifier;
 import com.jothapunkt.spigot.raftcraft.types.Rarity;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
+import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class CustomItem {
+public class CustomItem extends CustomClass<ItemStack> {
     protected Rarity rarity = Rarity.COMMON;
     protected ItemStack baseItem = new ItemStack(Material.IRON_INGOT);
     protected String name = "Test Item";
@@ -30,6 +31,11 @@ public class CustomItem {
     protected boolean enchantGlint = false;
     protected HashMap<Stat, Double> stats = new HashMap<>();
     protected List<ItemAbility> abilities = new ArrayList<>();
+
+    @Override
+    public PersistentDataContainer getPersistentDataContainer(ItemStack instance) {
+        return instance.getItemMeta().getPersistentDataContainer();
+    }
 
     public HashMap<Stat, Double> getStats() {
         return stats;
@@ -53,10 +59,6 @@ public class CustomItem {
         return null;
     }
 
-    public String getIdentifer() {
-        return CustomItemIdentifier.getIdentifier(this) != null ? CustomItemIdentifier.getIdentifier(this).name() : "UNMAPPED";
-    }
-
     public ItemStack reprint(ItemStack item) {
         ItemStack newItem = print();
 
@@ -78,14 +80,7 @@ public class CustomItem {
         result.setAmount(amount);
         ItemMeta meta = result.getItemMeta();
 
-        String identifier = getIdentifer();
-        // Set item id identifier
-        meta.getPersistentDataContainer()
-            .set(
-                new NamespacedKey(RaftCraft.getInstance(), "item_identifier"),
-                PersistentDataType.STRING,
-                identifier
-            );
+        setKey(meta.getPersistentDataContainer());
 
         ArrayList<String> lore = new ArrayList<>();
 
