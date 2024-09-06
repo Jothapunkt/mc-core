@@ -18,23 +18,16 @@ public class GUI implements InventoryHolder {
     protected Inventory inventory;
     protected HashMap<Integer, GUIElement> slots = new HashMap<>();
     protected boolean defaultUsable = false;
+    protected ItemStack backgroundItem = null;
 
     public GUI() {
-        inventory = setupInventory();
+        this(null);
     }
 
     public GUI(ItemStack backgroundItem) {
-        this();
-
-        if (backgroundItem != null) {
-            ItemMeta meta = backgroundItem.getItemMeta();
-            meta.setDisplayName(" ");
-            backgroundItem.setItemMeta(meta);
-
-            for (int i = 0; i < inventory.getSize(); i++) {
-                inventory.setItem(i, backgroundItem.clone());
-            }
-        }
+        inventory = setupInventory();
+        this.backgroundItem = backgroundItem;
+        updateInventory();
     }
 
     protected void slot(int slot, ItemStack item, GUIElement element) {
@@ -57,6 +50,18 @@ public class GUI implements InventoryHolder {
     protected Inventory setupInventory() {
         Inventory inventory = Bukkit.createInventory(this, 27);
         return inventory;
+    }
+
+    protected void updateInventory() {
+        if (backgroundItem != null) {
+            ItemMeta meta = backgroundItem.getItemMeta();
+            meta.setDisplayName(" ");
+            backgroundItem.setItemMeta(meta);
+
+            for (int i = 0; i < inventory.getSize(); i++) {
+                inventory.setItem(i, backgroundItem.clone());
+            }
+        }
     }
 
     @Override

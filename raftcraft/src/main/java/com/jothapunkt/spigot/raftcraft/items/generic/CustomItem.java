@@ -70,7 +70,12 @@ public class CustomItem {
     }
 
     public ItemStack print() {
+        return print(1);
+    }
+
+    public ItemStack print(int amount) {
         ItemStack result = baseItem.clone();
+        result.setAmount(amount);
         ItemMeta meta = result.getItemMeta();
 
         String identifier = getIdentifer();

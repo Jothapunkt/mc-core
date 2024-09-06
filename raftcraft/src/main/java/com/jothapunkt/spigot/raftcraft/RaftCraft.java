@@ -11,6 +11,7 @@ import com.jothapunkt.spigot.raftcraft.commands.CommandSkills;
 import com.jothapunkt.spigot.raftcraft.commands.CommandSpawn;
 import com.jothapunkt.spigot.raftcraft.commands.CommandWorlds;
 import com.jothapunkt.spigot.raftcraft.commands.CommandMounts;
+import com.jothapunkt.spigot.raftcraft.commands.CommandRecipes;
 import com.jothapunkt.spigot.raftcraft.listeners.BlockListener;
 import com.jothapunkt.spigot.raftcraft.listeners.BoatListener;
 import com.jothapunkt.spigot.raftcraft.listeners.CollectionListener;
@@ -30,6 +31,7 @@ import com.jothapunkt.spigot.raftcraft.logic.PlayerLogic;
 import com.jothapunkt.spigot.raftcraft.types.Wind;
 import com.jothapunkt.spigot.raftcraft.util.Initializers;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
+import com.jothapunkt.spigot.raftcraft.recipes.crafting.CraftingRecipes;
 
 
 public class RaftCraft extends JavaPlugin {
@@ -67,6 +69,7 @@ public class RaftCraft extends JavaPlugin {
         this.getCommand("mounts").setExecutor(new CommandMounts());
         this.getCommand("skills").setExecutor(new CommandSkills());
         this.getCommand("spawn").setExecutor(new CommandSpawn());
+        this.getCommand("recipes").setExecutor(new CommandRecipes());
 
         // Start Logic Loops
         FlotsamLogic.getFlotsamCollisionsLoop().runTaskTimer(this,  0, 2); // Every 0.1s
@@ -75,6 +78,9 @@ public class RaftCraft extends JavaPlugin {
         MobLogic.getMobUpdateLoop().runTaskTimer(this, 0, 10);
         MiscLogic.getEffectsLoop().runTaskTimer(this, 0, 1);
         FishingLogic.getFishingEventLoop().runTaskTimer(this, 0, 3);
+
+        // register recipes
+        CraftingRecipes.register();
     }
 
     @Override

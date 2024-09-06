@@ -19,6 +19,7 @@ public class ItemRegistry {
 
     public static CustomItem get(Material material) {
         CustomItem customVanillaItem = CustomVanillaItems.find(material);
+        
         if (customVanillaItem == null) {
             return new VanillaItem(material);
         } else {

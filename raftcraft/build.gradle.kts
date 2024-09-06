@@ -95,5 +95,10 @@ bukkitPluginYaml {
       usage = "/spawn"
       permission = "raftcraft.spawn"
     }
+    register("recipes") {
+      description = "Manage recipes"
+      usage = "/recipes"
+      permission = "raftcraft.recipes"
+    }
   }
 }
