@@ -36,7 +36,7 @@ public class BlockListener implements Listener {
                 spawner.getPersistentDataContainer().set(
                     new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"),
                     PersistentDataType.STRING,
-                    mob.getIdentifier()
+                    mob.getKey()
                 );
 
                 spawner.setSpawnedType(mob.getType());
@@ -47,7 +47,7 @@ public class BlockListener implements Listener {
 
                 spawner.update();
 
-                event.getPlayer().sendMessage(mob.getIdentifier());
+                event.getPlayer().sendMessage(mob.getKey());
             }
         }
     }
@@ -56,7 +56,7 @@ public class BlockListener implements Listener {
     public void onSpawnerSpawn(SpawnerSpawnEvent event) {
         if (event.getSpawner().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
             CustomMob mob = MobRegistry.get(event.getSpawner().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING));
-            Bukkit.broadcast(new TextComponent(mob.getIdentifier()));
+            Bukkit.broadcast(new TextComponent(mob.getKey()));
             mob.spawn(event.getLocation());
             event.setCancelled(true);
         }

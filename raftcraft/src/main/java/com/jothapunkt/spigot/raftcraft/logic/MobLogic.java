@@ -3,24 +3,16 @@ package com.jothapunkt.spigot.raftcraft.logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.maven.model.building.ModelBuildingEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
-import org.bukkit.entity.Monster;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
-import com.jothapunkt.spigot.raftcraft.types.Stat;
+import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
-import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 
 
 public class MobLogic {
@@ -38,9 +30,9 @@ public class MobLogic {
         List<MobInfo> mobs = new ArrayList<>();
 
         for (Entity entity : world.getEntities()) {
-            if (entity instanceof Mob) {
-                if (entity.getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
-                    mobs.add(new MobInfo((Mob) entity));
+            if (entity instanceof Mob mob) {
+                if (MobRegistry.get(mob) != null) {
+                    mobs.add(new MobInfo(mob));
                 }
             }
         }

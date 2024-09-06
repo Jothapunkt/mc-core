@@ -33,8 +33,9 @@ public class PlayerLogic {
                         player.sendMessage("Vehicle: " + mount.getType());
                         Location target = player.getLocation();
                         target.add(player.getLocation().getDirection().normalize().multiply(10));
-                        LivingEntity marker = Markers.target(target, 1.0);
-                        mount.setTarget(marker);
+
+                        Bukkit.getMobGoals().removeAllGoals(mount);
+                        mount.getPathfinder().moveTo(target);
                     }
                 }
             }

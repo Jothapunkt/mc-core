@@ -1,20 +1,20 @@
 package com.jothapunkt.spigot.raftcraft.mobs.ice;
 
 import org.bukkit.Color;
-import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.EquipmentSlot;
 
-import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherBoots;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherChestplate;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherLeggings;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.PlayerHead;
 import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
-import com.jothapunkt.spigot.raftcraft.util.Items;
+import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
 public class IceKing extends CustomMob {
+    static {CustomClassRegistry.getInstance().register(new IceKing());}
+
     public IceKing() {
         super();
         

@@ -1,9 +1,12 @@
 package com.jothapunkt.spigot.raftcraft.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
@@ -41,5 +44,18 @@ public class CustomClassRegistry {
         }
 
         return null;
+    }
+
+    public <T extends CustomClass> List<T> getSubClasses(Class<T> parentClass) {
+        List<T> children = new ArrayList<>();
+        Bukkit.broadcastMessage("Looking for subclasses of " + parentClass.getName());
+        for (CustomClass entry : registry.values()) {
+            Bukkit.broadcastMessage(entry.getKey());
+            if (parentClass.isInstance(entry)) {
+                children.add((T) entry);
+            }
+        }
+
+        return children;
     }
 }

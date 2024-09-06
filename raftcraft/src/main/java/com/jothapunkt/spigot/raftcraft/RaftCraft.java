@@ -32,6 +32,7 @@ import com.jothapunkt.spigot.raftcraft.types.Wind;
 import com.jothapunkt.spigot.raftcraft.util.Initializers;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 import com.jothapunkt.spigot.raftcraft.recipes.crafting.CraftingRecipes;
+import com.jothapunkt.spigot.raftcraft.setup.RegisterMobs;
 
 
 public class RaftCraft extends JavaPlugin {
@@ -79,8 +80,9 @@ public class RaftCraft extends JavaPlugin {
         MiscLogic.getEffectsLoop().runTaskTimer(this, 0, 1);
         FishingLogic.getFishingEventLoop().runTaskTimer(this, 0, 3);
 
-        // register recipes
+        // Register custom classes, do general setup
         CraftingRecipes.register();
+        RegisterMobs.register();
     }
 
     @Override

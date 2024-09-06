@@ -89,27 +89,6 @@ public class CommandFlotsam implements CommandExecutor {
             return true;
         }
 
-        if (args.length >= 2 && args[0].equals("spawn")) {
-            String search = "";
-
-            for (int i = 1; i < args.length; i++) {
-                search += args[i];
-                if (i < args.length - 1) {
-                    search += " ";
-                }
-            }
-
-            CustomMob mob = MobRegistry.get(search);
-
-            if (mob != null) {
-                mob.spawn(player.getLocation().add(player.getLocation().getDirection().normalize().multiply(2)));
-            } else {
-                player.sendMessage("Unknown Mob: " + search);
-            }
-
-            return true;
-        }
-
         if (args.length >= 2 && args[0].equals("spawner")) {
             String search = "";
 

@@ -19,6 +19,7 @@ import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -40,6 +41,27 @@ public class CommandSpawn implements CommandExecutor {
         if (args.length >= 1 && args[0].equalsIgnoreCase("island")) {
             new DungeonTeleporter(Dungeons.TREASURE_ISLAND).instantiate(player.getLocation());
             player.sendMessage("Spawned Island");
+            return true;
+        }
+
+        if (args.length >= 2 && args[0].equalsIgnoreCase("mob")) {
+            String search = "";
+
+            for (int i = 1; i < args.length; i++) {
+                search += args[i];
+                if (i < args.length - 1) {
+                    search += " ";
+                }
+            }
+
+            CustomMob mob = MobRegistry.get(search);
+
+            if (mob != null) {
+                mob.instantiate(player.getLocation().add(player.getLocation().getDirection().normalize().multiply(2)));
+            } else {
+                player.sendMessage("Unknown Mob: " + search);
+            }
+
             return true;
         }
 

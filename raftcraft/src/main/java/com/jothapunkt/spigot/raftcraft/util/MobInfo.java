@@ -85,7 +85,7 @@ public class MobInfo {
         if (health <= 0) {
             instance.setHealth(0.0);
         } else {
-            instance.setHealth(20);
+            instance.setHealth(instance.getMaxHealth());
             setStat(Stat.HEALTH, health);
             Bukkit.broadcastMessage("Remaining HP: " + health);
         }

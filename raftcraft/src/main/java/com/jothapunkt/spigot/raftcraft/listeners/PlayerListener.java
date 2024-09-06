@@ -11,6 +11,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -72,5 +73,12 @@ public class PlayerListener implements Listener {
             PersistentDataType.BOOLEAN,
             raft.getWorldName().equals(event.getPlayer().getWorld().getName())
         );
+    }
+
+    @EventHandler
+    public void onDismount(VehicleExitEvent event) {
+        if (event.getExited() instanceof Player) {
+            event.getVehicle().remove();
+        }
     }
 }

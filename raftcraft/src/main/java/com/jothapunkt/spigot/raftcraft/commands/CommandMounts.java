@@ -33,7 +33,7 @@ public class CommandMounts implements CommandExecutor {
         }
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("summon")) {
-            new Mount(MobRegistry.get("Pig")).summon(player);;
+            new Mount(MobRegistry.get("Pig")).summon(player);
             return true;
         }
 

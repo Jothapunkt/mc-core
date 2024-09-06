@@ -5,10 +5,10 @@ import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
 import com.jothapunkt.spigot.raftcraft.items.CustomItemIdentifier;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
-import com.jothapunkt.spigot.raftcraft.mobs.CustomMobIdentifier;
 import com.jothapunkt.spigot.raftcraft.types.Rarity;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
+import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 import com.jothapunkt.spigot.raftcraft.util.LootTable;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
 import com.jothapunkt.spigot.raftcraft.util.Numbers;
@@ -41,7 +41,7 @@ import java.util.Map.Entry;
 import java.util.HashMap;
 
 
-public class CustomMob {
+public class CustomMob extends CustomClass<Mob> {
     protected Rarity rarity = Rarity.COMMON;
     protected String name = "Test Mob";
     protected EntityType type = EntityType.ZOMBIE;
@@ -81,11 +81,12 @@ public class CustomMob {
         stats.put(stat, value);
     }
 
-    public String getIdentifier() {
-        return CustomMobIdentifier.getIdentifier(this) != null ? CustomMobIdentifier.getIdentifier(this).name() : type.name();
+    @Override
+    public Mob instantiateRaw(Location location) {
+        return spawn(location);
     }
 
-    public LivingEntity spawn(Location location) {
+    public Mob spawn(Location location) {
         Mob mob = (Mob) location.getWorld().spawnEntity(location, type, false);
         MobInfo info = new MobInfo(mob);
 
@@ -97,14 +98,6 @@ public class CustomMob {
         for (Entry<Stat, Double> stat: stats.entrySet()) {
             info.setStat(stat.getKey(), stat.getValue());
         }
-
-        // Set item id identifier
-        mob.getPersistentDataContainer()
-            .set(
-                new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"),
-                PersistentDataType.STRING,
-                getIdentifier()
-            );
         
         mob.setCustomName(getInstanceName(mob));
         mob.setCustomNameVisible(true);
@@ -122,7 +115,7 @@ public class CustomMob {
         ItemMeta meta = spawner.getItemMeta();
 
         meta.setDisplayName(ChatColor.RESET + "" + ChatColor.WHITE + name + " Spawner");
-        meta.getPersistentDataContainer().set(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING, getIdentifier());
+        meta.getPersistentDataContainer().set(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING, getKey());
         spawner.setItemMeta(meta);
 
         return spawner;
