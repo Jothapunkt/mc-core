@@ -22,7 +22,7 @@ public class Mount extends CustomMob {
     public void onDismount(VehicleExitEvent event) {
         event.getVehicle().remove();
         event.getExited().getWorld().spawnParticle(
-            Particle.POOF,
+            Particle.SMOKE,
             event.getExited().getLocation(),
             15,
             .4,
