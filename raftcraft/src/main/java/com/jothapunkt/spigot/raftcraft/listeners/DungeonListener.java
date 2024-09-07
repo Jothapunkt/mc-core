@@ -44,14 +44,4 @@ public class DungeonListener implements Listener {
             instance.getDungeon().onBlockBreak(event);
         } 
     }
-
-    @EventHandler
-    public void onSpawnerSpawn(SpawnerSpawnEvent event) {
-        if (event.getSpawner().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
-            CustomMob mob = MobRegistry.get(event.getSpawner().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING));
-            Bukkit.broadcast(new TextComponent(mob.getKey()));
-            mob.spawn(event.getLocation());
-            event.setCancelled(true);
-        }
-    }
 }

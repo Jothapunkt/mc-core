@@ -112,7 +112,6 @@ public class CustomMob extends CustomClass<Mob> {
     public ItemStack getSpawner() {
         ItemStack spawner = new VanillaItem(Material.SPAWNER).print();
         ItemMeta meta = spawner.getItemMeta();
-
         meta.setDisplayName(ChatColor.RESET + "" + ChatColor.WHITE + name + " Spawner");
         meta.getPersistentDataContainer().set(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING, getKey());
         spawner.setItemMeta(meta);

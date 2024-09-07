@@ -6,6 +6,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.block.spawner.SpawnerEntry;
+import org.bukkit.craftbukkit.block.CraftCreatureSpawner;
+import org.bukkit.entity.Mob;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -31,15 +33,25 @@ public class BlockListener implements Listener {
             event.getPlayer().sendMessage("Placed spawner " + event.getItemInHand().getType());
 
             if (event.getPlayer().getInventory().getItemInMainHand().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
-                CustomMob mob = MobRegistry.get(event.getItemInHand().getItemMeta().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING));
+                String mobIdentifier = event.getItemInHand().getItemMeta().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING);
+                Bukkit.broadcastMessage("Mob identifier: " + mobIdentifier);
+                CustomMob mob = MobRegistry.get(mobIdentifier);
+                
+                if (mob == null) {
+                    Bukkit.broadcastMessage("Could not find " + mobIdentifier);
+                }
+
                 CreatureSpawner spawner = (CreatureSpawner) event.getBlockPlaced().getState();
+                
                 spawner.getPersistentDataContainer().set(
                     new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"),
                     PersistentDataType.STRING,
-                    mob.getKey()
+                    mobIdentifier
                 );
 
-                spawner.setSpawnedType(mob.getType());
+                Mob instance = mob.spawn(event.getPlayer().getLocation().add(0, 3, 0));
+                spawner.setSpawnedEntity(instance.createSnapshot());
+                instance.remove();
                 
                 for (SpawnerEntry entry : spawner.getPotentialSpawns()) {
                     event.getPlayer().sendMessage("Can spawn: " + entry.getSnapshot().getEntityType().name());
@@ -57,7 +69,7 @@ public class BlockListener implements Listener {
         if (event.getSpawner().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
             CustomMob mob = MobRegistry.get(event.getSpawner().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING));
             Bukkit.broadcast(new TextComponent(mob.getKey()));
-            mob.spawn(event.getLocation());
+            mob.instantiate(event.getLocation());
             event.setCancelled(true);
         }
     }

@@ -23,7 +23,7 @@ public class PigMount extends Mount {
     @Override
     public void onRightClick(PlayerInteractEvent event) {
         event.getPlayer().getVehicle().setVelocity(
-            event.getPlayer().getLocation().getDirection().normalize().multiply(2.5).setY(1.5)
+            event.getPlayer().getLocation().getDirection().normalize().multiply(2).setY(1.5)
         );
     }
 }

@@ -28,7 +28,7 @@ public class MobRegistry {
         name = string.toUpperCase().replace(" ", "");
 
         for (CustomMob mob : CustomClassRegistry.getInstance().getSubClasses(CustomMob.class)) {
-            if (name.equalsIgnoreCase(mob.getClass().getSimpleName())) {
+            if (name.equalsIgnoreCase(mob.getClass().getSimpleName()) || name.equalsIgnoreCase(mob.getClass().getName())) {
                 return mob;
             }
         }
