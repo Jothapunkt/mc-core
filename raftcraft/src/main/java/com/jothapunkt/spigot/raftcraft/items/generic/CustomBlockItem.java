@@ -16,8 +16,8 @@ public class CustomBlockItem<T extends PersistentDataHolder> extends CustomItem 
     }
 
     @Override
-    public ItemStack print() {
-        ItemStack item = super.print();
+    public ItemStack print(int amount) {
+        ItemStack item = super.print(amount);
         ItemMeta meta = item.getItemMeta();
         meta.getPersistentDataContainer().set(
             new NamespacedKey(RaftCraft.getInstance(), "custom_block"),

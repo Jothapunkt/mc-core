@@ -8,6 +8,7 @@ import javax.management.openmbean.KeyAlreadyExistsException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
@@ -45,6 +46,18 @@ public class CustomClassRegistry {
         }
 
         return get(item.getItemMeta());
+    }
+
+    public CustomClass get(Block block) {
+        if (block == null) {
+            return null;
+        }
+
+        if (block.getState() instanceof PersistentDataHolder holder) {
+            return get(holder);
+        }
+
+        return null;
     }
 
     public CustomClass get(PersistentDataHolder instance) {

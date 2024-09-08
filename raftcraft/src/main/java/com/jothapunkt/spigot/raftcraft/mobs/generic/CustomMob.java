@@ -2,6 +2,7 @@ package com.jothapunkt.spigot.raftcraft.mobs.generic;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
+import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
 import com.jothapunkt.spigot.raftcraft.types.Rarity;
@@ -109,14 +110,12 @@ public class CustomMob extends CustomClass<Mob> {
         return mob;
     }
 
-    public ItemStack getSpawner() {
-        ItemStack spawner = new VanillaItem(Material.SPAWNER).print();
-        ItemMeta meta = spawner.getItemMeta();
-        meta.setDisplayName(ChatColor.RESET + "" + ChatColor.WHITE + name + " Spawner");
-        meta.getPersistentDataContainer().set(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING, getKey());
-        spawner.setItemMeta(meta);
+    public String getName() {
+        return name;
+    }
 
-        return spawner;
+    public ItemStack getSpawner() {
+        return new CustomSpawner(this).print();
     }
 
     public EntityType getType() {

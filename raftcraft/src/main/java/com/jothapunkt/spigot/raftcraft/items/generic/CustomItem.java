@@ -67,6 +67,10 @@ public class CustomItem extends CustomClass<ItemStack> {
         return newItem;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getDamage() {
         return damage;
     }

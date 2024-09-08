@@ -23,47 +23,13 @@ import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.world.item.Item;
 
 
 public class BlockListener implements Listener {
-    @EventHandler
-    public void onSpawnerPlace(BlockPlaceEvent event) {
-        if (event.getBlockPlaced().getType() == Material.SPAWNER) {
-            event.getPlayer().sendMessage("Placed spawner " + event.getItemInHand().getType());
-
-            if (event.getPlayer().getInventory().getItemInMainHand().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
-                String mobIdentifier = event.getItemInHand().getItemMeta().getPersistentDataContainer().get(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"), PersistentDataType.STRING);
-                Bukkit.broadcastMessage("Mob identifier: " + mobIdentifier);
-                CustomMob mob = MobRegistry.get(mobIdentifier);
-                
-                if (mob == null) {
-                    Bukkit.broadcastMessage("Could not find " + mobIdentifier);
-                }
-
-                CreatureSpawner spawner = (CreatureSpawner) event.getBlockPlaced().getState();
-                
-                spawner.getPersistentDataContainer().set(
-                    new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"),
-                    PersistentDataType.STRING,
-                    mobIdentifier
-                );
-
-                Mob instance = mob.spawn(event.getPlayer().getLocation().add(0, 3, 0));
-                spawner.setSpawnedEntity(instance.createSnapshot());
-                instance.remove();
-                
-                for (SpawnerEntry entry : spawner.getPotentialSpawns()) {
-                    event.getPlayer().sendMessage("Can spawn: " + entry.getSnapshot().getEntityType().name());
-                }
-
-                spawner.update();
-
-                event.getPlayer().sendMessage(mob.getKey());
-            }
-        }
-    }
-
     @EventHandler
     public void onSpawnerSpawn(SpawnerSpawnEvent event) {
         if (event.getSpawner().getPersistentDataContainer().has(new NamespacedKey(RaftCraft.getInstance(), "mob_identifier"))) {
@@ -76,16 +42,30 @@ public class BlockListener implements Listener {
 
     @EventHandler
     public void onCustomBlockPlace(BlockPlaceEvent event) {
-        CustomItem heldCustomItem = ItemRegistry.get(event.getItemInHand());
+        CustomItem heldCustomItem = ItemRegistry.get(event.getPlayer().getInventory().getItem(event.getHand()));
 
-        if (!(heldCustomItem instanceof CustomBlockItem<?>)) { return; }
+        if (heldCustomItem == null) {
+            return;
+        }
 
-        CustomBlock<PersistentDataHolder> customBlock = ((CustomBlockItem<PersistentDataHolder>) heldCustomItem).getCustomBlock();
+        event.getPlayer().sendMessage(
+            Component.text("Placing " + heldCustomItem.getName())
+            .hoverEvent(event.getItemInHand().asHoverEvent())
+        );
 
-        if (event.getBlockPlaced().getState() instanceof PersistentDataHolder) {
-            PersistentDataHolder holder = (PersistentDataHolder) event.getBlockPlaced().getState();
+        if (!(heldCustomItem instanceof CustomBlockItem<?>)) {
+            Bukkit.broadcastMessage("Not a custom block item: " + heldCustomItem.getClass().getSimpleName());
+            return;
+        }
+
+        CustomBlock<PersistentDataHolder> customBlock = ((CustomBlockItem) heldCustomItem).getCustomBlock();
+
+        if (event.getBlockPlaced().getState() instanceof PersistentDataHolder holder) {
             customBlock.setKey(holder);
             ((BlockState) holder).update();
+            Bukkit.broadcastMessage("Wrote persistent data onto " + event.getBlockPlaced().getState().getClass().getSimpleName());
+        } else {
+            Bukkit.broadcastMessage("Not able to write persistent data onto " + event.getBlockPlaced().getState().getClass().getSimpleName());
         }
     }
 }

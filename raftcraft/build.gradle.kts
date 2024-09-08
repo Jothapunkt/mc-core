@@ -100,5 +100,10 @@ bukkitPluginYaml {
       usage = "/recipes"
       permission = "raftcraft.recipes"
     }
+    register("inspect") {
+      description = "Inspect data"
+      usage = "/inspect"
+      permission = "raftcraft.inspect"
+    }
   }
 }
