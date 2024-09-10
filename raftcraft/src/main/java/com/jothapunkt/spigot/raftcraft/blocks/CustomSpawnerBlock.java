@@ -10,9 +10,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.blocks.generic.CustomBlock;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
 public class CustomSpawnerBlock extends CustomBlock<CreatureSpawner> {

@@ -1,4 +1,4 @@
-package com.jothapunkt.spigot.raftcraft.mobs.fishing;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.fishing;
 
 import org.bukkit.Color;
 import org.bukkit.entity.EntityType;
@@ -6,11 +6,11 @@ import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherBoots;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherChestplate;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherLeggings;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.PlayerHead;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;

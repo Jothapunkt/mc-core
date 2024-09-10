@@ -13,9 +13,9 @@ import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.blocks.CustomSpawnerBlock;
 import com.jothapunkt.spigot.raftcraft.blocks.PreservingJarBlock;
 import com.jothapunkt.spigot.raftcraft.blocks.generic.CustomBlock;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomBlockItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.types.Rarity;
 
 public class CustomSpawner extends CustomBlockItem<CreatureSpawner> {

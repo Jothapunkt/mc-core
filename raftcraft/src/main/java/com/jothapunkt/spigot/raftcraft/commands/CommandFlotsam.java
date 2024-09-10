@@ -15,11 +15,11 @@ import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.logic.FlotsamLogic;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.tables.FlotsamTypeTable;
 import com.jothapunkt.spigot.raftcraft.util.Displays;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;

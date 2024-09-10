@@ -20,10 +20,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.FixedPositionItem;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.modifiers.effects.CustomEffect;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.rafts.Raft;

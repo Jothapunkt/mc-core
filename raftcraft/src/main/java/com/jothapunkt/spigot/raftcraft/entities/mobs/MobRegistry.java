@@ -1,11 +1,11 @@
-package com.jothapunkt.spigot.raftcraft.mobs;
+package com.jothapunkt.spigot.raftcraft.entities.mobs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.VanillaMob;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.VanillaMob;
 import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 

@@ -1,4 +1,4 @@
-package com.jothapunkt.spigot.raftcraft.mobs.swamp;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.swamp;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -7,9 +7,9 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.EquipmentSlot;
 
 import com.jothapunkt.spigot.raftcraft.effects.visual.CustomMobNameTag;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomZombie;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomZombie;
 
 public class Wisp extends CustomZombie {
     public Wisp() {

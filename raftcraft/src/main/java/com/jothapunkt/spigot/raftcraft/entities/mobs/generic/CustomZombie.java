@@ -1,4 +1,4 @@
-package com.jothapunkt.spigot.raftcraft.mobs.generic;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.generic;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;

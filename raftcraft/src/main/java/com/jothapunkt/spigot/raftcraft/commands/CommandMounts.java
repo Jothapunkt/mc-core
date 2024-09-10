@@ -8,13 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.World;
 
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.errors.BaseError;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.util.Worlds;
 import com.jothapunkt.spigot.raftcraft.util.GameRules;
 import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 
 import net.md_5.bungee.api.ChatColor;
 

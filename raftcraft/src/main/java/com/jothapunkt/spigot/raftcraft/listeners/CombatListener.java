@@ -10,10 +10,10 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.RightClickAbility;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.Displays;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;

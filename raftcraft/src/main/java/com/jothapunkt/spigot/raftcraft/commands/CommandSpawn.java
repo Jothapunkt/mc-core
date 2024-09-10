@@ -12,6 +12,8 @@ import org.bukkit.World;
 
 import com.jothapunkt.spigot.raftcraft.dungeons.generic.Dungeons;
 import com.jothapunkt.spigot.raftcraft.effects.interactables.DungeonTeleporter;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.errors.BaseError;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.util.Worlds;
@@ -23,8 +25,6 @@ import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 import com.jothapunkt.spigot.raftcraft.util.Skins;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
 import net.md_5.bungee.api.ChatColor;
 import net.minecraft.server.level.ClientInformation;

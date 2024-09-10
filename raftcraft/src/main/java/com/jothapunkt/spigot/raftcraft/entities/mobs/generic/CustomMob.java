@@ -1,7 +1,8 @@
-package com.jothapunkt.spigot.raftcraft.mobs.generic;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.generic;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
+import com.jothapunkt.spigot.raftcraft.entities.CustomEntity;
 import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
@@ -41,7 +42,7 @@ import java.util.Map.Entry;
 import java.util.HashMap;
 
 
-public class CustomMob extends CustomClass<Mob> {
+public class CustomMob extends CustomEntity<Mob> {
     protected Rarity rarity = Rarity.COMMON;
     protected String name = "Test Mob";
     protected EntityType type = EntityType.ZOMBIE;

@@ -1,6 +1,6 @@
 package com.jothapunkt.spigot.raftcraft.setup;
 
-import com.jothapunkt.spigot.raftcraft.mobs.ice.IceKing;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.ice.IceKing;
 import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 

@@ -1,12 +1,12 @@
-package com.jothapunkt.spigot.raftcraft.mobs.misc;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.misc;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.EquipmentSlot;
 
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomZombie;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomZombie;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
 
 public class Dummy extends CustomZombie {

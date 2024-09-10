@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
 
 public class Mount extends CustomMob {

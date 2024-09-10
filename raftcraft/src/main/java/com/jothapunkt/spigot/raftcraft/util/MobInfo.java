@@ -15,8 +15,8 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.util.Vector;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.modifiers.effects.CustomEffect;
 import com.jothapunkt.spigot.raftcraft.types.DamageType;
 import com.jothapunkt.spigot.raftcraft.types.Stat;

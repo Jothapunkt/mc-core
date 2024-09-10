@@ -1,11 +1,11 @@
-package com.jothapunkt.spigot.raftcraft.mobs.swamp;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.swamp;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.EquipmentSlot;
 
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
 public class SwampKnight extends CustomMob {
     public SwampKnight() {

@@ -17,11 +17,11 @@ import org.bukkit.persistence.PersistentDataType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.blocks.generic.CustomBlock;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomBlockItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;

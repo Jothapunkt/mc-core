@@ -24,8 +24,8 @@ import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
 import com.jothapunkt.spigot.raftcraft.effects.generic.EntityBoundEffect;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.logic.FlotsamLogic;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.util.Displays;
 
 public class TreasureIslandEffect extends EntityBoundEffect {

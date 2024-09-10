@@ -1,16 +1,16 @@
-package com.jothapunkt.spigot.raftcraft.mobs.ice;
+package com.jothapunkt.spigot.raftcraft.entities.mobs.ice;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.EquipmentSlot;
 
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherBoots;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherChestplate;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.LeatherLeggings;
 import com.jothapunkt.spigot.raftcraft.items.vanilla.PlayerHead;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.Items;
 
 public class FrozenAdventurer extends CustomMob {

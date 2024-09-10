@@ -11,7 +11,7 @@ import org.bukkit.entity.Mob;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
-import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
 
 

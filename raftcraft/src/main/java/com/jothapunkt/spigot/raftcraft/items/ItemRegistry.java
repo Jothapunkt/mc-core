@@ -7,9 +7,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
+import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
-import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
