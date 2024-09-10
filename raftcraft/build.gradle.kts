@@ -27,10 +27,15 @@ tasks.assemble {
   dependsOn(tasks.reobfJar)
 }
 
+repositories {
+    mavenCentral()
+    maven("https://repo.dmulloy2.net/repository/public/")
+}
+
 dependencies {
   paperweight.paperDevBundle("1.21-R0.1-SNAPSHOT")
-  // paperweight.foliaDevBundle("1.21-R0.1-SNAPSHOT")
-  // paperweight.devBundle("com.example.paperfork", "1.21-R0.1-SNAPSHOT")
+  implementation("com.comphenix.protocol:ProtocolLib:5.1.0")
+  implementation("com.comphenix.packetwrapper:PacketWrapper:1.13-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -39,6 +44,7 @@ tasks {
     // See https://openjdk.java.net/jeps/247 for more information.
     options.release = 21
   }
+
   javadoc {
     options.encoding = Charsets.UTF_8.name() // We want UTF-8 for everything
   }

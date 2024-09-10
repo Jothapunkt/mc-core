@@ -35,15 +35,19 @@ import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 import com.jothapunkt.spigot.raftcraft.recipes.crafting.CraftingRecipes;
 import com.jothapunkt.spigot.raftcraft.setup.RegisterItems;
 import com.jothapunkt.spigot.raftcraft.setup.RegisterMobs;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.ProtocolLibrary;
 
 
 public class RaftCraft extends JavaPlugin {
     private static RaftCraft instance;
     private Wind wind = new Wind();
+    private ProtocolManager protocolManager;
 
     @Override
     public void onEnable() {
         instance = this;
+        protocolManager = ProtocolLibrary.getProtocolManager();
 
         Initializers.scoreboard();
         // Initialize scores and stats
@@ -99,5 +103,9 @@ public class RaftCraft extends JavaPlugin {
 
     public static RaftCraft getInstance() {
         return instance;
+    }
+
+    public ProtocolManager getProtocolManager() {
+        return protocolManager;
     }
 }

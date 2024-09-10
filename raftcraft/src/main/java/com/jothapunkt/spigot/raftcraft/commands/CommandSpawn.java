@@ -1,6 +1,8 @@
 package com.jothapunkt.spigot.raftcraft.commands;
 
 import java.io.File;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,15 +15,19 @@ import com.jothapunkt.spigot.raftcraft.effects.interactables.DungeonTeleporter;
 import com.jothapunkt.spigot.raftcraft.errors.BaseError;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.util.Worlds;
+import com.mojang.authlib.GameProfile;
+import com.jothapunkt.spigot.raftcraft.util.FakePlayers;
 import com.jothapunkt.spigot.raftcraft.util.GameRules;
 import com.jothapunkt.spigot.raftcraft.util.Numbers;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
+import com.jothapunkt.spigot.raftcraft.util.Skins;
 import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
 import com.jothapunkt.spigot.raftcraft.types.Skills;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
 
 import net.md_5.bungee.api.ChatColor;
+import net.minecraft.server.level.ClientInformation;
 
 
 public class CommandSpawn implements CommandExecutor {
@@ -41,6 +47,16 @@ public class CommandSpawn implements CommandExecutor {
         if (args.length >= 1 && args[0].equalsIgnoreCase("island")) {
             new DungeonTeleporter(Dungeons.TREASURE_ISLAND).instantiate(player.getLocation());
             player.sendMessage("Spawned Island");
+            return true;
+        }
+
+        if (args.length >= 1 && args[0].equalsIgnoreCase("npc")) {
+            FakePlayers.spawn(
+                player.getLocation(),
+                "Test Player",
+                Skins.FISHMAN
+            );
+            player.sendMessage("Spawned NPC");
             return true;
         }
 

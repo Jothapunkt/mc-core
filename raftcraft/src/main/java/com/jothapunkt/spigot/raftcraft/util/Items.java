@@ -17,8 +17,7 @@ public class Items {
     public static ItemStack head(String texture) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) item.getItemMeta();
-        PlayerProfile profile = Bukkit.getServer().createProfile(UUID.randomUUID(), "");
-        profile.setProperty(new ProfileProperty("textures", texture));
+        PlayerProfile profile = FakePlayers.makePlayerProfile(texture);
         meta.setPlayerProfile(profile);
         item.setItemMeta(meta);
         return item;

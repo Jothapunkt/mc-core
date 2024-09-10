@@ -2,23 +2,17 @@ package com.jothapunkt.spigot.raftcraft.blocks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Barrel;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.block.spawner.SpawnerEntry;
 import org.bukkit.entity.Mob;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.ApiStatus.OverrideOnly;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.blocks.generic.CustomBlock;
-import com.jothapunkt.spigot.raftcraft.gui.PreservingJarGUI;
-import com.jothapunkt.spigot.raftcraft.interfaces.InteractableBlock;
 import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
 import com.jothapunkt.spigot.raftcraft.mobs.MobRegistry;
 import com.jothapunkt.spigot.raftcraft.mobs.generic.CustomMob;
-import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
 public class CustomSpawnerBlock extends CustomBlock<CreatureSpawner> {
