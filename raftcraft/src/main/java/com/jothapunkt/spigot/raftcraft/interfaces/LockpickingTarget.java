@@ -23,6 +23,6 @@ public interface LockpickingTarget {
         return new ItemStack(Material.CHAIN);
     }
     public default ItemStack getKeyItem() {
-        return new ItemStack(Material.TRIAL_KEY);
+        return new ItemStack(Material.TRIPWIRE_HOOK);
     }
 }

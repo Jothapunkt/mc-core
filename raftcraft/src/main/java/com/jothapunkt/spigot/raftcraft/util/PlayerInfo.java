@@ -319,4 +319,12 @@ public class PlayerInfo {
 
         return effects;
     }
+
+    public void give(ItemStack... items) {
+        HashMap<Integer, ItemStack> overflow = player.getInventory().addItem(items);
+
+        for (ItemStack extra : overflow.values()) {
+            Items.drop(player.getLocation(), extra);
+        }
+    }
 }
