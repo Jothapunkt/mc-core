@@ -29,7 +29,6 @@ import com.jothapunkt.spigot.raftcraft.logic.FlotsamLogic;
 import com.jothapunkt.spigot.raftcraft.util.Displays;
 
 public class TreasureIslandEffect extends EntityBoundEffect {
-
     public TreasureIslandEffect(Interaction core) {
         super(core);
 

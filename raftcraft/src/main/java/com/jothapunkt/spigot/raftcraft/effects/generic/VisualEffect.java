@@ -11,7 +11,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
-import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 
 public class VisualEffect {
     protected int duration = 60; // In Ticks

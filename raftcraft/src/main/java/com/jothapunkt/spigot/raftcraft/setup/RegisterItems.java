@@ -1,7 +1,9 @@
 package com.jothapunkt.spigot.raftcraft.setup;
 
+import com.jothapunkt.spigot.raftcraft.blocks.LockpickBarrel;
 import com.jothapunkt.spigot.raftcraft.entities.mobs.ice.IceKing;
 import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
+import com.jothapunkt.spigot.raftcraft.items.blocks.LockpickBarrelItem;
 import com.jothapunkt.spigot.raftcraft.items.menu.MenuItem;
 import com.jothapunkt.spigot.raftcraft.items.menu.MountControlItem;
 import com.jothapunkt.spigot.raftcraft.items.swords.Claymore;
@@ -17,5 +19,7 @@ public class RegisterItems {
         registry.register(new MenuItem());
         registry.register(new MountControlItem());
         registry.register(new CustomSpawner(new IceKing()));
+        registry.register(new LockpickBarrel());
+        registry.register(new LockpickBarrelItem());
     }
 }

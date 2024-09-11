@@ -27,7 +27,6 @@ public class GUI implements InventoryHolder {
     public GUI(ItemStack backgroundItem) {
         inventory = setupInventory();
         this.backgroundItem = backgroundItem;
-        updateInventory();
     }
 
     protected void slot(int slot, ItemStack item, GUIElement element) {

@@ -11,9 +11,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.persistence.PersistentDataHolder;
 
 import com.jothapunkt.spigot.raftcraft.dungeons.generic.Dungeons;
+import com.jothapunkt.spigot.raftcraft.effects.generic.VisualEffect;
 import com.jothapunkt.spigot.raftcraft.effects.visual.TreasureIslandEffect;
 import com.jothapunkt.spigot.raftcraft.gui.DungeonEntranceGUI;
 import com.jothapunkt.spigot.raftcraft.interfaces.InteractableEntity;
+import com.jothapunkt.spigot.raftcraft.interfaces.PersistentEffectHolder;
 import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 
 public class DungeonTeleporter extends CustomInteractable implements InteractableEntity {
