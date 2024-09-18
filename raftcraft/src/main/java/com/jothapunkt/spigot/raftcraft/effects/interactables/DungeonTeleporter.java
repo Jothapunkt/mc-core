@@ -33,6 +33,7 @@ public class DungeonTeleporter extends CustomInteractable implements Interactabl
     protected Interaction instantiateRaw(Location location) {
         Interaction box = (Interaction) location.getWorld().spawnEntity(location, EntityType.INTERACTION);
 
+        box.setPersistent(false);
         box.setInteractionHeight(3f);
         box.setInteractionWidth(3f);
         

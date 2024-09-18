@@ -17,6 +17,9 @@ import org.bukkit.persistence.PersistentDataType;
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.rafts.OceanGenerator;
+import com.jothapunkt.spigot.raftcraft.worlds.CustomWorld;
+import com.jothapunkt.spigot.raftcraft.worlds.FlatWorld;
+import com.jothapunkt.spigot.raftcraft.worlds.OceanWorld;
 
 import net.kyori.adventure.util.TriState;
 import net.md_5.bungee.api.ChatColor;
@@ -162,31 +165,23 @@ public class Worlds {
 
     public static World createWorld(String type, String name) {
         if (type.equals("normal")) {
-            WorldCreator creator = new WorldCreator(name);
-            creator.generateStructures(false);
-            creator.keepSpawnLoaded(TriState.FALSE);
-            creator.type(WorldType.NORMAL);
-            World world = creator.createWorld();
-            return world;
+            return new CustomWorld().instantiate(name);
         }
 
         if (type.equals("flat")) {
-            WorldCreator creator = new WorldCreator(name);
-            creator.generateStructures(false);
-            creator.keepSpawnLoaded(TriState.FALSE);
-            creator.type(WorldType.FLAT);
-            World world = creator.createWorld();
-            return world;
+            return new FlatWorld().instantiate(name);
         }
 
         if (type.equals("ocean")) {
-            WorldCreator creator = new WorldCreator(name);
-            creator.generateStructures(false);
-            creator.keepSpawnLoaded(TriState.FALSE);
-            creator.type(WorldType.FLAT);
-            creator.generator(new OceanGenerator());
-            World world = creator.createWorld();
-            return world;
+            return new OceanWorld().instantiate(name);
+        }
+
+        return null;
+    }
+
+    public static CustomWorld getCustomWorld(World world) {
+        if (CustomClassRegistry.getInstance().get(world) instanceof CustomWorld customWorld) {
+            return customWorld;
         }
 
         return null;

@@ -5,8 +5,9 @@ import java.util.List;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import com.jothapunkt.spigot.raftcraft.dungeons.generic.Dungeon;
+import com.jothapunkt.spigot.raftcraft.worlds.OceanWorld;
 
-public class TreasureIsland extends Dungeon {
+public class TreasureIsland extends Dungeon<OceanWorld> {
     public TreasureIsland() {
         worldName = "treasure_island";
     }

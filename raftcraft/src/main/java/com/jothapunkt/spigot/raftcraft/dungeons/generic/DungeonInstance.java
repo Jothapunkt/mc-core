@@ -11,13 +11,15 @@ import org.bukkit.persistence.PersistentDataType;
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.errors.WorldError;
 import com.jothapunkt.spigot.raftcraft.rafts.Raft;
+import com.jothapunkt.spigot.raftcraft.util.CustomClassRegistry;
 import com.jothapunkt.spigot.raftcraft.util.Worlds;
+import com.jothapunkt.spigot.raftcraft.worlds.CustomWorld;
 
 public class DungeonInstance {
     private UUID identifier;
-    private Dungeon dungeon;
+    private Dungeon<?> dungeon;
 
-    public DungeonInstance(Dungeon dungeon) {
+    public DungeonInstance(Dungeon<?> dungeon) {
         this.identifier = UUID.randomUUID();
         this.dungeon = dungeon;
     }
@@ -26,7 +28,7 @@ public class DungeonInstance {
         return "instance_" + identifier.toString();
     }
 
-    public Dungeon getDungeon() {
+    public Dungeon<?> getDungeon() {
         return dungeon;
     }
 
@@ -51,7 +53,12 @@ public class DungeonInstance {
         Worlds.teleport(player, world);
     }
 
-    public static DungeonInstance getDungeonInstance(World world) {
+    public CustomWorld getCustomWorld() {
+        World world = Worlds.getIfLoaded(getWorldName());
+        return Worlds.getCustomWorld(world);
+    }
+
+    public static DungeonInstance getDungeonInstance(World world) { 
         if (world.hasMetadata("dungeon")) {
             return (DungeonInstance) world.getMetadata("dungeon").get(0).value();
         }

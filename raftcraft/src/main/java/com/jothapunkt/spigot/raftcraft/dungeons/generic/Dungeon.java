@@ -10,10 +10,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.jothapunkt.spigot.raftcraft.util.Strings;
+import com.jothapunkt.spigot.raftcraft.worlds.CustomWorld;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Dungeon {
+public class Dungeon<T extends CustomWorld> {
     protected String worldName = "";
     protected Material icon = Material.COBBLESTONE;
     protected List<String> description = new ArrayList<>();

@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDismountEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -84,10 +85,12 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onDismount(VehicleExitEvent event) {
-        if (event.getExited() instanceof Player) {
-            if (MobRegistry.get(event.getVehicle()) instanceof Mount mount) {
+    public void onDismount(EntityDismountEvent event) {
+        if (event.getEntity() instanceof Player) {
+            if (MobRegistry.get(event.getDismounted()) instanceof Mount mount) {
                 mount.onDismount(event);
+            } else {
+                Bukkit.broadcastMessage(event.getDismounted().getType().toString());
             }
         }
     }

@@ -20,7 +20,7 @@ import com.jothapunkt.spigot.raftcraft.listeners.CombatListener;
 import com.jothapunkt.spigot.raftcraft.listeners.CustomClassListener;
 import com.jothapunkt.spigot.raftcraft.listeners.ItemAbilityListener;
 import com.jothapunkt.spigot.raftcraft.listeners.MobListener;
-import com.jothapunkt.spigot.raftcraft.listeners.DungeonListener;
+import com.jothapunkt.spigot.raftcraft.listeners.WorldListener;
 import com.jothapunkt.spigot.raftcraft.listeners.FishingListener;
 import com.jothapunkt.spigot.raftcraft.listeners.GUIListener;
 import com.jothapunkt.spigot.raftcraft.listeners.PlayerListener;
@@ -62,7 +62,7 @@ public class RaftCraft extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         getServer().getPluginManager().registerEvents(new CombatListener(), this);
         getServer().getPluginManager().registerEvents(new BlockListener(), this);
-        getServer().getPluginManager().registerEvents(new DungeonListener(), this);
+        getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new FishingListener(), this);
         getServer().getPluginManager().registerEvents(new CustomClassListener(), this);

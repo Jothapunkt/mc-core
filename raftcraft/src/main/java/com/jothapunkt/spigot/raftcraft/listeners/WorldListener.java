@@ -28,7 +28,7 @@ import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 
 
-public class DungeonListener implements Listener {
+public class WorldListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         DungeonInstance instance = DungeonInstance.getDungeonInstance(event.getBlock().getWorld());

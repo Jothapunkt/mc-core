@@ -3,6 +3,7 @@ package com.jothapunkt.spigot.raftcraft.entities.mobs.generic;
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
 import com.jothapunkt.spigot.raftcraft.entities.CustomEntity;
+import com.jothapunkt.spigot.raftcraft.entities.CustomFightableEntity;
 import com.jothapunkt.spigot.raftcraft.items.blocks.CustomSpawner;
 import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.VanillaItem;
@@ -42,10 +43,9 @@ import java.util.Map.Entry;
 import java.util.HashMap;
 
 
-public class CustomMob extends CustomEntity<Mob> {
+public class CustomMob<T extends Mob> extends CustomFightableEntity<T> {
     protected Rarity rarity = Rarity.COMMON;
     protected String name = "Test Mob";
-    protected EntityType type = EntityType.ZOMBIE;
     protected List<String> description = List.of();
     protected HashMap<Stat, Double> stats = new HashMap<>();
     protected HashMap<EquipmentSlot, CustomItem> equipment = new HashMap<>();
@@ -82,13 +82,8 @@ public class CustomMob extends CustomEntity<Mob> {
         stats.put(stat, value);
     }
 
-    @Override
-    public Mob instantiateRaw(Location location) {
-        return spawn(location);
-    }
-
-    public Mob spawn(Location location) {
-        Mob mob = (Mob) location.getWorld().spawnEntity(location, type, false);
+    public T spawn(Location location) {
+        T mob = super.spawn(location);
         MobInfo info = new MobInfo(mob);
 
         // Set stats

@@ -1,22 +1,12 @@
 package com.jothapunkt.spigot.raftcraft.commands;
 
-import java.io.File;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.World;
 
-import com.jothapunkt.spigot.raftcraft.entities.mobs.MobRegistry;
-import com.jothapunkt.spigot.raftcraft.errors.BaseError;
-import com.jothapunkt.spigot.raftcraft.errors.WorldError;
-import com.jothapunkt.spigot.raftcraft.util.Worlds;
-import com.jothapunkt.spigot.raftcraft.util.GameRules;
+import com.jothapunkt.spigot.raftcraft.mounts.PhantomMount;
 import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
-import com.jothapunkt.spigot.raftcraft.mounts.generic.Mount;
-
-import net.md_5.bungee.api.ChatColor;
 
 
 public class CommandMounts implements CommandExecutor {
@@ -33,9 +23,21 @@ public class CommandMounts implements CommandExecutor {
             return true;
         }
 
-        if (args.length >= 1 && args[0].equalsIgnoreCase("summon")) {
-            new PigMount().summon(player);
+        if (args.length == 1 && args[0].equalsIgnoreCase("summon")) {
+            new PhantomMount().summon(player);
             return true;
+        }
+
+        if (args.length > 1 && args[0].equalsIgnoreCase("summon")) {
+            if (args[1].equalsIgnoreCase("pig")) {
+                new PigMount().summon(player);
+                return true;
+            }
+
+            if (args[1].equalsIgnoreCase("phantom")) {
+                new PhantomMount().summon(player);
+                return true;
+            }
         }
 
         return false;

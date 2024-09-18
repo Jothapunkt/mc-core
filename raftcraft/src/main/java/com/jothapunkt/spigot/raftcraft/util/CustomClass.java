@@ -32,11 +32,19 @@ public class CustomClass<T> {
         throw new NotImplementedException();
     }
 
+    protected T instantiateRaw(String name) {
+        throw new NotImplementedException();
+    }
+
     public T instantiate(Location location) {
         T holder = instantiateRaw(location);
         setKey(holder);
         return holder;
     }
 
-    public void onInterval() {}
+    public T instantiate(String name) {
+        T holder = instantiateRaw(name);
+        setKey(holder);
+        return holder;
+    }
 }

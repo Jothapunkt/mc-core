@@ -22,7 +22,7 @@ import com.jothapunkt.spigot.raftcraft.types.DamageType;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
 
 public class MobInfo {
-    private CustomMob mob;
+    private CustomMob<?> mob;
     private Mob instance;
     private Meta m;
 
