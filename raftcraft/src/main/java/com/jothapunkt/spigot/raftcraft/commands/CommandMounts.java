@@ -1,10 +1,15 @@
 package com.jothapunkt.spigot.raftcraft.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Phantom;
 import org.bukkit.entity.Player;
+import org.joml.Random;
 
+import com.jothapunkt.spigot.raftcraft.mounts.DolphinMount;
 import com.jothapunkt.spigot.raftcraft.mounts.PhantomMount;
 import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
 
@@ -36,6 +41,11 @@ public class CommandMounts implements CommandExecutor {
 
             if (args[1].equalsIgnoreCase("phantom")) {
                 new PhantomMount().summon(player);
+                return true;
+            }
+
+            if (args[1].equalsIgnoreCase("dolphin")) {
+                new DolphinMount().summon(player);
                 return true;
             }
         }

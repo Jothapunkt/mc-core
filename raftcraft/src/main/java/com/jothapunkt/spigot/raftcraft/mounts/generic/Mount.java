@@ -16,26 +16,38 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import com.jothapunkt.spigot.raftcraft.entities.mobs.generic.CustomMob;
 import com.jothapunkt.spigot.raftcraft.util.Markers;
 import com.jothapunkt.spigot.raftcraft.util.MobInfo;
+import com.jothapunkt.spigot.raftcraft.util.Strings;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class Mount<T extends Mob> extends CustomMob<T> {
+    protected double speed = 0.5;
+
     public void summon(Player rider) {
         Mob mount = instantiate(rider.getLocation());
-        Bukkit.getMobGoals().removeAllGoals(mount);
-        mount.setPassenger(rider);
+
+        // Start movement
+        new MobInfo(mount).getMeta().set("mountMovement", true);
+
+        mount.addPassenger(rider);
+        rider.sendMessage(ChatColor.GREEN + "Summoned your " + getName());
     }
 
     public void onDismount(EntityDismountEvent event) {
-        Bukkit.broadcastMessage(event.getDismounted().getType().toString());
-        event.getDismounted().remove();
-        event.getEntity().getWorld().spawnParticle(
+        Player rider = (Player) event.getEntity();
+        Entity mount = event.getDismounted();
+        
+        rider.sendMessage(ChatColor.RED + "Your " + getName() + " despawned");
+        rider.getWorld().spawnParticle(
             Particle.SMOKE,
-            event.getDismounted().getLocation(),
+            mount.getLocation(),
             15,
             .4,
             .4,
             .4,
             0
         );
+        mount.remove();
     }
 
     public void onLeftClick(PlayerInteractEvent event) {
