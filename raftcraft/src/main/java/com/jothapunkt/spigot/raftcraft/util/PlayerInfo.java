@@ -32,6 +32,8 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
+import com.comphenix.protocol.wrappers.Pair;
+
 public class PlayerInfo {
     private Player player;
     private Meta m;
@@ -326,5 +328,28 @@ public class PlayerInfo {
         for (ItemStack extra : overflow.values()) {
             Items.drop(player.getLocation(), extra);
         }
+    }
+
+    public ItemStack getNecklace() {
+        return PersistentData.from(player).getItem("necklace");
+    }
+
+    public ItemStack getBelt() {
+        return PersistentData.from(player).getItem("belt");
+    }
+
+    public Pair<ItemStack, ItemStack> getRings() {
+        return new Pair<ItemStack, ItemStack>(
+            PersistentData.from(player).getItem("ring1"),
+            PersistentData.from(player).getItem("ring2")
+        );
+    }
+
+    public void setNecklace(ItemStack necklace) {
+        PersistentData.from(player).setItem(necklace, "necklace");
+    }
+
+    public void setBelt(ItemStack belt) {
+        PersistentData.from(player).setItem(belt, "belt");
     }
 }

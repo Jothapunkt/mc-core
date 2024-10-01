@@ -10,6 +10,7 @@ import com.jothapunkt.spigot.raftcraft.commands.CommandInspect;
 import com.jothapunkt.spigot.raftcraft.commands.CommandRaft;
 import com.jothapunkt.spigot.raftcraft.commands.CommandSkills;
 import com.jothapunkt.spigot.raftcraft.commands.CommandSpawn;
+import com.jothapunkt.spigot.raftcraft.commands.CommandTinker;
 import com.jothapunkt.spigot.raftcraft.commands.CommandWorlds;
 import com.jothapunkt.spigot.raftcraft.commands.CommandMounts;
 import com.jothapunkt.spigot.raftcraft.commands.CommandRecipes;
@@ -78,6 +79,7 @@ public class RaftCraft extends JavaPlugin {
         this.getCommand("spawn").setExecutor(new CommandSpawn());
         this.getCommand("recipes").setExecutor(new CommandRecipes());
         this.getCommand("inspect").setExecutor(new CommandInspect());
+        this.getCommand("tinker").setExecutor(new CommandTinker());
 
         // Start Logic Loops
         FlotsamLogic.getFlotsamCollisionsLoop().runTaskTimer(this,  0, 2); // Every 0.1s

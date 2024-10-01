@@ -111,5 +111,15 @@ bukkitPluginYaml {
       usage = "/inspect"
       permission = "raftcraft.inspect"
     }
+    register("tinker") {
+      description = "Tinker with items"
+      usage = "/tinker"
+      permission = "raftcraft.tinker"
+    }
+    register("equipment") {
+      description = "Manage equipment"
+      usage = "/equipment"
+      permission = "raftcraft.equipment"
+    }
   }
 }

@@ -1,5 +1,8 @@
 package com.jothapunkt.spigot.raftcraft.util;
 
+import java.io.IOException;
+
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -43,6 +46,29 @@ public class PersistentData {
     public <P, C> C get(PersistentDataType<P, C> type, String... key) {
         Pair<PersistentDataContainer, NamespacedKey> location = getLocation(key);
         return location.getFirst().get(location.getSecond(), type);
+    }
+
+    public ItemStack getItem(String... key) {
+        Pair<PersistentDataContainer, NamespacedKey> location = getLocation(key);
+        String data = location.getFirst().get(location.getSecond(), PersistentDataType.STRING);
+        try {
+            return Deserialize.item(data);
+        } catch(IOException e) {
+            Bukkit.getLogger().warning(e.toString());
+            return null;
+        } catch(ClassNotFoundException e) {
+            Bukkit.getLogger().warning(e.toString());
+            return null;
+        }
+    }
+
+    public void setItem(ItemStack item, String... key) {
+        try {
+            set(Serialize.base64(item), key);
+        } catch(IOException e) {
+            Bukkit.getLogger().warning(e.toString());
+        }
+        
     }
 
     public void set(String value, String... key) {
