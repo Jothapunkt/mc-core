@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import com.jothapunkt.spigot.raftcraft.RaftCraft;
 import com.jothapunkt.spigot.raftcraft.abilities.items.generic.ItemAbility;
@@ -18,6 +19,7 @@ import com.jothapunkt.spigot.raftcraft.types.Rarity;
 import com.jothapunkt.spigot.raftcraft.types.Stat;
 import com.jothapunkt.spigot.raftcraft.util.CustomClass;
 
+import net.kyori.adventure.util.TriState;
 import net.md_5.bungee.api.ChatColor;
 
 public class CustomItem extends CustomClass<ItemStack> {
@@ -29,6 +31,7 @@ public class CustomItem extends CustomClass<ItemStack> {
     protected List<String> description = List.of();
     protected boolean soulbound = false;
     protected boolean enchantGlint = false;
+    protected TriState stackable = TriState.NOT_SET;
     protected HashMap<Stat, Double> stats = new HashMap<>();
     protected List<ItemAbility> abilities = new ArrayList<>();
 
@@ -118,10 +121,21 @@ public class CustomItem extends CustomClass<ItemStack> {
         if (name != null) {
             meta.setDisplayName(rarity.getRarityColor() + name); 
         }
-
-        meta.setEnchantmentGlintOverride(enchantGlint);
          
         meta.setLore(lore);
+
+        // Apply extra flags
+        meta.setEnchantmentGlintOverride(enchantGlint);
+
+        if (stackable == TriState.FALSE) {
+            result.setAmount(1);
+            meta.getPersistentDataContainer().set(
+                new NamespacedKey(RaftCraft.getInstance(), "unstackableID"),
+                PersistentDataType.STRING,
+                UUID.randomUUID().toString()
+            );
+        }
+
         result.setItemMeta(meta);
 
         return result;

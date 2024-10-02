@@ -352,4 +352,12 @@ public class PlayerInfo {
     public void setBelt(ItemStack belt) {
         PersistentData.from(player).setItem(belt, "belt");
     }
+
+    public void setFirstRing(ItemStack ring) {
+        PersistentData.from(player).setItem(ring, "ring1");
+    }
+
+    public void setSecondRing(ItemStack ring) {
+        PersistentData.from(player).setItem(ring, "ring2");
+    }
 }
