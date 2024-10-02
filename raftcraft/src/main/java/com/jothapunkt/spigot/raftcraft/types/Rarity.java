@@ -5,7 +5,7 @@ public enum Rarity {
     TRASH(ChatColor.DARK_GRAY),
     COMMON(ChatColor.WHITE),
     UNCOMMON(ChatColor.GREEN),
-    RARE(ChatColor.DARK_BLUE),
+    RARE(ChatColor.BLUE),
     EPIC(ChatColor.DARK_PURPLE),
     LEGENDARY(ChatColor.GOLD);
 

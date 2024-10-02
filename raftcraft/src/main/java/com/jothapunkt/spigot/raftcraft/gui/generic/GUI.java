@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -75,5 +76,9 @@ public class GUI implements InventoryHolder {
 
     public GUIElement getElement(Integer slot) {
         return slots.get(slot);
+    }
+
+    public void onInventoryClick(InventoryClickEvent event) {
+        // Add implementation in subclasses if needed
     }
 }

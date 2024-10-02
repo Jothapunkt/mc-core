@@ -17,8 +17,14 @@ public class GUIListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         GUI gui = new PlayerInfo(player).getCurrentGUI();
 
-        // Check if this is a click inside a gui
-        if (gui == null || !event.getClickedInventory().equals(gui.getInventory())) {
+        // Check if a GUI is open
+        if (gui == null) {
+            return;
+        }
+
+        // If the click is inside the player inventory, notify the GUI and exit
+        if (event.getClickedInventory().equals(player.getInventory())) {
+            gui.onInventoryClick(event);
             return;
         }
 

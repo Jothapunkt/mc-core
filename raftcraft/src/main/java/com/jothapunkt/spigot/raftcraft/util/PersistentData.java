@@ -51,6 +51,11 @@ public class PersistentData {
     public ItemStack getItem(String... key) {
         Pair<PersistentDataContainer, NamespacedKey> location = getLocation(key);
         String data = location.getFirst().get(location.getSecond(), PersistentDataType.STRING);
+
+        if (data == null) {
+            return null;
+        }
+
         try {
             return Deserialize.item(data);
         } catch(IOException e) {
