@@ -52,6 +52,11 @@ public class PlayerInfo {
         
         items.add(player.getInventory().getItemInMainHand());
         items.add(player.getInventory().getItemInOffHand());
+        items.add(getNecklace());
+        items.add(getBelt());
+        Pair<ItemStack, ItemStack> rings = getRings();
+        items.add(rings.getFirst());
+        items.add(rings.getSecond());
 
         return items;
     }
