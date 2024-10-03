@@ -61,6 +61,10 @@ public class GUI implements InventoryHolder {
             for (int i = 0; i < inventory.getSize(); i++) {
                 inventory.setItem(i, backgroundItem.clone());
             }
+        } else {
+            for (int i = 0; i < inventory.getSize(); i++) {
+                inventory.setItem(i, null);
+            }
         }
     }
 

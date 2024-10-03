@@ -69,7 +69,7 @@ public class CustomMob<T extends Mob> extends CustomFightableEntity<T> {
     public String getInstanceName(Mob instance) {
         Double health = new MobInfo(instance).getStat(Stat.HEALTH);
 
-        if (health == null && false) {
+        if (health == null) {
             Bukkit.broadcastMessage("No health value for " + name + " (" + type + "), removing");
             instance.remove();
             return "[Lv " + level + "] " + name + " " + Stat.HEALTH.getShortName() + " " + "???";

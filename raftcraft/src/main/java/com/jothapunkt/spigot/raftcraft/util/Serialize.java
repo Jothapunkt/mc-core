@@ -21,7 +21,7 @@ public class Serialize {
         return Base64Coder.encodeLines(outputStream.toByteArray());
     }
 
-    public static String listToBase64(List<Object> inputs) throws IOException {
+    public static <T> String listToBase64(List<T> inputs) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(outputStream);
 
@@ -44,7 +44,7 @@ public class Serialize {
         return objectToBase64(item);
     }
 
-    public static String base64(ItemStack[] item) throws IOException {
-        return arrayToBase65(item);
+    public static String base64(ItemStack[] items) throws IOException {
+        return arrayToBase65(items);
     }
 }

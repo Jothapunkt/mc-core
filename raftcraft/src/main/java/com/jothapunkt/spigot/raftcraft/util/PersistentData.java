@@ -1,6 +1,8 @@
 package com.jothapunkt.spigot.raftcraft.util;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -67,6 +69,25 @@ public class PersistentData {
         }
     }
 
+    public List<ItemStack> getItems(String... key) {
+        Pair<PersistentDataContainer, NamespacedKey> location = getLocation(key);
+        String data = location.getFirst().get(location.getSecond(), PersistentDataType.STRING);
+
+        if (data == null) {
+            return new ArrayList<>();
+        }
+
+        try {
+            return Deserialize.items(data);
+        } catch(IOException e) {
+            Bukkit.getLogger().warning(e.toString());
+            return new ArrayList<>();
+        } catch(ClassNotFoundException e) {
+            Bukkit.getLogger().warning(e.toString());
+            return new ArrayList<>();
+        }
+    }
+
     public void setItem(ItemStack item, String... key) {
         try {
             set(Serialize.base64(item), key);
@@ -74,6 +95,20 @@ public class PersistentData {
             Bukkit.getLogger().warning(e.toString());
         }
         
+    }
+
+    public void setItems(List<ItemStack> items, String... key) {
+        try {
+            set(Serialize.listToBase64(items), key);
+        } catch(IOException e) {
+            Bukkit.getLogger().warning(e.toString());
+        }
+    }
+
+    public void addItem(ItemStack item, String... key) {
+        List<ItemStack> items = getItems(key);
+        items.add(item);
+        setItems(items, key);
     }
 
     public void set(String value, String... key) {

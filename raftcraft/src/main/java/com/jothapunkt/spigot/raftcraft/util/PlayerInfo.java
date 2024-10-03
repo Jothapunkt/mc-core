@@ -365,4 +365,14 @@ public class PlayerInfo {
     public void setSecondRing(ItemStack ring) {
         PersistentData.from(player).setItem(ring, "ring2");
     }
+
+    public List<CustomItem> getMounts() {
+        ArrayList<CustomItem> mounts = new ArrayList<>();
+
+        for (ItemStack item : PersistentData.from(player).getItems("mounts")) {
+            mounts.add(ItemRegistry.get(item));
+        }
+
+        return mounts;
+    }
 }

@@ -9,9 +9,15 @@ import org.bukkit.entity.Phantom;
 import org.bukkit.entity.Player;
 import org.joml.Random;
 
+import com.jothapunkt.spigot.raftcraft.gui.MountsGUI;
+import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
+import com.jothapunkt.spigot.raftcraft.items.generic.MountItem;
 import com.jothapunkt.spigot.raftcraft.mounts.DolphinMount;
 import com.jothapunkt.spigot.raftcraft.mounts.PhantomMount;
 import com.jothapunkt.spigot.raftcraft.mounts.PigMount;
+import com.jothapunkt.spigot.raftcraft.util.PersistentData;
+
+import net.md_5.bungee.api.ChatColor;
 
 
 public class CommandMounts implements CommandExecutor {
@@ -24,12 +30,16 @@ public class CommandMounts implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            player.sendMessage("Currently in " + player.getWorld().getName());
+            new MountsGUI(player).show(player);
             return true;
         }
 
         if (args.length == 1 && args[0].equalsIgnoreCase("summon")) {
-            new PhantomMount().summon(player);
+            if (ItemRegistry.get(PersistentData.from(player).getItem("selectedMount")) instanceof MountItem mountItem) {
+                mountItem.getMount().summon(player);
+            } else {
+                player.sendMessage(ChatColor.RED + "No mount active, select one in the /mounts menu");
+            }
             return true;
         }
 
