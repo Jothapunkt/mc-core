@@ -121,5 +121,10 @@ bukkitPluginYaml {
       usage = "/equipment"
       permission = "raftcraft.equipment"
     }
+    register("skilltree") {
+      description = "Manage skilltrees"
+      usage = "/skilltree"
+      permission = "raftcraft.skilltree"
+    }
   }
 }

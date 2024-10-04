@@ -7,9 +7,18 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
+
+import com.jothapunkt.spigot.raftcraft.util.PersistentData;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class SkillTreeNode {
     protected String name;
+    protected String tree;
     protected Function<Integer, List<String>> description;
     protected List<Integer> levelCosts = List.of(
         1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -19,9 +28,36 @@ public class SkillTreeNode {
     protected Material baseMaterial = Material.BOOK;
     protected Material unlockedMaterial = Material.ENCHANTED_BOOK;
 
-    public SkillTreeNode(String name, Function<Integer, List<String>> description) {
+    public SkillTreeNode(String tree, String name, Function<Integer, List<String>> description) {
         this.name = name;
         this.description = description;
+        this.tree = tree;
+    }
+
+    public String getKey() {
+        return name.toLowerCase().replace(" ", "_");
+    }
+
+    public int getPlayerLevel(Player player) {
+        Integer level = PersistentData.from(player).get(PersistentDataType.INTEGER, "trees", tree, getKey());
+        if (level == null) {
+            return 0;
+        }
+
+        return level;
+    }
+
+    public ItemStack getItem(Player player) {
+        int level = getPlayerLevel(player);
+        ItemStack item = new ItemStack(level > 0 ? unlockedMaterial : baseMaterial);
+
+        //item.setAmount(Math.min(1, level));
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setItemName(ChatColor.GOLD + name);
+        item.setItemMeta(meta);
+
+        return item;
     }
 
     public String getName() {

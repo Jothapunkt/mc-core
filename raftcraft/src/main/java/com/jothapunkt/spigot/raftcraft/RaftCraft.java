@@ -10,6 +10,7 @@ import com.jothapunkt.spigot.raftcraft.commands.CommandFlotsam;
 import com.jothapunkt.spigot.raftcraft.commands.CommandInspect;
 import com.jothapunkt.spigot.raftcraft.commands.CommandRaft;
 import com.jothapunkt.spigot.raftcraft.commands.CommandSkills;
+import com.jothapunkt.spigot.raftcraft.commands.CommandSkilltree;
 import com.jothapunkt.spigot.raftcraft.commands.CommandSpawn;
 import com.jothapunkt.spigot.raftcraft.commands.CommandTinker;
 import com.jothapunkt.spigot.raftcraft.commands.CommandWorlds;
@@ -82,7 +83,8 @@ public class RaftCraft extends JavaPlugin {
         this.getCommand("inspect").setExecutor(new CommandInspect());
         this.getCommand("tinker").setExecutor(new CommandTinker());
         this.getCommand("equipment").setExecutor(new CommandEquipment());
-        
+        this.getCommand("skilltree").setExecutor(new CommandSkilltree());
+
         // Start Logic Loops
         FlotsamLogic.getFlotsamCollisionsLoop().runTaskTimer(this,  0, 2); // Every 0.1s
         PlayerLogic.getPlayerUpdateLoop().runTaskTimer(this, 0, 10); // Every 0.5s

@@ -29,12 +29,12 @@ public class ScrollableGUI extends GUI {
     }
 
     public void scrollUp() {
-        offset -= 9;
+        offset = Math.max(offset - 9, 0);
         updateInventory();
     }
 
     public void scrollDown() {
-        offset += 9;
+        offset = Math.min(offset + 9, 200);
         updateInventory();
     }
 
