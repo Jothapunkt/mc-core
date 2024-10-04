@@ -25,7 +25,7 @@ public class RecipeListGUI extends GUI {
     }
 
     @Override
-    protected void updateInventory() {
+    protected void refresh() {
         super.updateInventory();
         List<CustomRecipe> recipes = CustomRecipeRegistry.getInstance().getRecipes();
 

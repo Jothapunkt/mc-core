@@ -17,6 +17,8 @@ import org.bukkit.persistence.PersistentDataType;
 import com.comphenix.protocol.wrappers.Pair;
 import com.jothapunkt.spigot.raftcraft.gui.generic.GUI;
 import com.jothapunkt.spigot.raftcraft.gui.generic.GUIElement;
+import com.jothapunkt.spigot.raftcraft.gui.generic.ScrollableGUI;
+import com.jothapunkt.spigot.raftcraft.gui.generic.ScrollableGUIElement;
 import com.jothapunkt.spigot.raftcraft.interfaces.LockpickingTarget;
 import com.jothapunkt.spigot.raftcraft.items.ItemRegistry;
 import com.jothapunkt.spigot.raftcraft.items.generic.Belt;
@@ -28,9 +30,8 @@ import com.jothapunkt.spigot.raftcraft.types.Direction;
 import com.jothapunkt.spigot.raftcraft.util.PersistentData;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 
-import net.minecraft.world.item.Item;
 
-public class MountsGUI extends GUI {
+public class MountsGUI extends ScrollableGUI {
     private Player player;
 
     public MountsGUI(Player player) {
@@ -61,12 +62,12 @@ public class MountsGUI extends GUI {
     }
 
     @Override
-    protected void updateInventory() {
-        super.updateInventory();
+    protected void refresh() {
+        super.refresh();
         
         List<ItemStack> mounts = PersistentData.from(player).getItems("mounts");
         for (int i = 0; i < mounts.size(); i++) {
-            slot(i, mounts.get(i), new GUIElement((InventoryClickEvent event) -> handleMountClick(event)));
+            slot(i, mounts.get(i), new ScrollableGUIElement((InventoryClickEvent event) -> handleMountClick(event)));
         }
     }
 

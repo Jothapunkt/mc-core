@@ -39,8 +39,9 @@ public class LockpickingGUI extends GUI {
     }
 
     @Override
-    protected void updateInventory() {
-        super.updateInventory();
+    protected void refresh() {
+        slots.clear();
+
         slot(9, target.getKeyItem(), new GUIElement());
         slot(17, target.getLootItem(), new GUIElement((InventoryClickEvent event) -> attemptOpen(event)));
 

@@ -32,9 +32,8 @@ public class EquipmentGUI extends GUI {
     }
 
     @Override
-    protected void updateInventory() {
-        super.updateInventory();
-        
+    protected void refresh() {
+        slots.clear();        
         PlayerInfo info = new PlayerInfo(player);
 
         // Necklace

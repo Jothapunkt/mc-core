@@ -99,7 +99,7 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onInventoryClick(InventoryClickEvent event) {
         CustomItem clickedItem = ItemRegistry.get(event.getCurrentItem());
-        Bukkit.broadcastMessage("Clicked item " + clickedItem.getKey());
+
         if (clickedItem instanceof FixedPositionItem) {
             event.setCancelled(true);
         }

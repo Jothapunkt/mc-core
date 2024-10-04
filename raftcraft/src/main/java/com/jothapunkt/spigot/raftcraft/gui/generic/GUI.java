@@ -1,6 +1,7 @@
 package com.jothapunkt.spigot.raftcraft.gui.generic;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -32,6 +33,7 @@ public class GUI implements InventoryHolder {
 
     protected void slot(int slot, ItemStack item, GUIElement element) {
         inventory.setItem(slot, item);
+        element.setItem(item);
         slots.put(slot, element);
     }
 
@@ -53,6 +55,15 @@ public class GUI implements InventoryHolder {
     }
 
     protected void updateInventory() {
+        refresh();
+        render();
+    }
+
+    protected void refresh() {
+
+    }
+
+    protected void background() {
         if (backgroundItem != null) {
             ItemMeta meta = backgroundItem.getItemMeta();
             meta.setDisplayName(" ");
@@ -66,6 +77,17 @@ public class GUI implements InventoryHolder {
                 inventory.setItem(i, null);
             }
         }
+    }
+
+    protected void foreground() {
+        for (Entry<Integer, GUIElement> entry : slots.entrySet()) {
+            inventory.setItem(entry.getKey(), entry.getValue().getItem());
+        }
+    }
+
+    protected void render() {
+        background();
+        foreground();
     }
 
     @Override
