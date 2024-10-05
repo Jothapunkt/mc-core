@@ -26,21 +26,23 @@ import com.jothapunkt.spigot.raftcraft.items.generic.CustomItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.MountItem;
 import com.jothapunkt.spigot.raftcraft.items.generic.Necklace;
 import com.jothapunkt.spigot.raftcraft.items.generic.Ring;
-import com.jothapunkt.spigot.raftcraft.skills.trees.SkillTree;
-import com.jothapunkt.spigot.raftcraft.skills.trees.SkillTreeNode;
+import com.jothapunkt.spigot.raftcraft.skills.trees.PerkTree;
+import com.jothapunkt.spigot.raftcraft.skills.trees.Perk;
 import com.jothapunkt.spigot.raftcraft.types.Direction;
 import com.jothapunkt.spigot.raftcraft.util.PersistentData;
 import com.jothapunkt.spigot.raftcraft.util.PlayerInfo;
 
 
-public class SkillTreeGUI extends ScrollableGUI {
+public class PerkTreeGUI extends ScrollableGUI {
     private Player player;
-    private SkillTree tree;
+    private PerkTree tree;
 
-    public SkillTreeGUI(Player player, SkillTree tree) {
+    public PerkTreeGUI(Player player, PerkTree tree) {
         this.player = player;
         this.tree = tree;
+        backgroundItem = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 
+        inventory = setupInventory();
         updateInventory();
     }
 
@@ -48,7 +50,7 @@ public class SkillTreeGUI extends ScrollableGUI {
     protected void refresh() {
         super.refresh();
         
-        for (Pair<Integer, SkillTreeNode> node : tree.getNodes()) {
+        for (Pair<Integer, Perk> node : tree.getNodes()) {
             player.sendMessage(node.getSecond().getName());
             player.getInventory().addItem(node.getSecond().getItem(player));
             slot(node.getFirst(), node.getSecond().getItem(player), new ScrollableGUIElement());
@@ -57,7 +59,8 @@ public class SkillTreeGUI extends ScrollableGUI {
 
     @Override
     protected Inventory setupInventory() {
-        Inventory inventory = Bukkit.createInventory(this, 54, "tree.getName()");
+        String name = tree == null ? "Skill Tree" : tree.getName();
+        Inventory inventory = Bukkit.createInventory(this, 54, name);
         return inventory;
     }
 

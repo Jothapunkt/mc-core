@@ -16,7 +16,7 @@ import com.jothapunkt.spigot.raftcraft.util.PersistentData;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class SkillTreeNode {
+public class Perk {
     protected String name;
     protected String tree;
     protected Function<Integer, List<String>> description;
@@ -24,14 +24,13 @@ public class SkillTreeNode {
         1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1
     );
-    protected List<SkillTreeNode> prerequisites = new ArrayList<>();
+    protected List<Perk> prerequisites = new ArrayList<>();
     protected Material baseMaterial = Material.BOOK;
     protected Material unlockedMaterial = Material.ENCHANTED_BOOK;
 
-    public SkillTreeNode(String tree, String name, Function<Integer, List<String>> description) {
+    public Perk(String name, Function<Integer, List<String>> description) {
         this.name = name;
         this.description = description;
-        this.tree = tree;
     }
 
     public String getKey() {
@@ -56,6 +55,7 @@ public class SkillTreeNode {
         ItemMeta meta = item.getItemMeta();
         meta.setItemName(ChatColor.GOLD + name);
         item.setItemMeta(meta);
+        item.setLore(description.apply(getPlayerLevel(player)));
 
         return item;
     }
@@ -64,7 +64,7 @@ public class SkillTreeNode {
         return name;
     }
 
-    public SkillTreeNode setName(String name) {
+    public Perk setName(String name) {
         this.name = name;
         return this;
     }
@@ -73,16 +73,16 @@ public class SkillTreeNode {
         return description;
     }
 
-    public SkillTreeNode setDescription(Function<Integer, List<String>> description) {
+    public Perk setDescription(Function<Integer, List<String>> description) {
         this.description = description;
         return this;
     }
 
-    public List<SkillTreeNode> getPrerequisites() {
+    public List<Perk> getPrerequisites() {
         return prerequisites;
     }
 
-    public SkillTreeNode setPrerequisites(List<SkillTreeNode> prerequisites) {
+    public Perk setPrerequisites(List<Perk> prerequisites) {
         this.prerequisites = prerequisites;
         return this;
     }
@@ -91,7 +91,7 @@ public class SkillTreeNode {
         return baseMaterial;
     }
 
-    public SkillTreeNode setBaseMaterial(Material baseMaterial) {
+    public Perk setBaseMaterial(Material baseMaterial) {
         this.baseMaterial = baseMaterial;
         return this;
     }
@@ -100,7 +100,7 @@ public class SkillTreeNode {
         return unlockedMaterial;
     }
 
-    public SkillTreeNode setUnlockedMaterial(Material unlockedMateria) {
+    public Perk setUnlockedMaterial(Material unlockedMateria) {
         this.unlockedMaterial = unlockedMateria;
         return this;
     }
@@ -109,8 +109,16 @@ public class SkillTreeNode {
         return levelCosts;
     }
 
-    public SkillTreeNode setLevelCosts(List<Integer> levelCosts) {
+    public Perk setLevelCosts(List<Integer> levelCosts) {
         this.levelCosts = levelCosts;
         return this;
+    }
+
+    public String getTree() {
+        return tree;
+    }
+
+    public void setTree(String tree) {
+        this.tree = tree;
     }
 }

@@ -18,7 +18,12 @@ public enum Stat {
     SPEED("🦶", ChatColor.WHITE, 100),
     SWIM_SPEED("🐠", ChatColor.AQUA, 100),
     BOAT_SPEED("⛵", ChatColor.AQUA, 100),
-    PICKUP_RANGE("◯", ChatColor.GREEN, 2);
+    PICKUP_RANGE("◯", ChatColor.GREEN, 2),
+
+    MINING_SPEED("◯", ChatColor.GREEN, 100),
+    DIGGING_SPEED("◯", ChatColor.GREEN, 100),
+
+    TREASURE_CHANCE("◯", ChatColor.GOLD, 100);
 
     private Double defaultValue;
     private String icon = "";

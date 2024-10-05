@@ -9,13 +9,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.jothapunkt.spigot.raftcraft.gui.SkillTreeGUI;
+import com.jothapunkt.spigot.raftcraft.gui.PerkTreeGUI;
 import com.jothapunkt.spigot.raftcraft.skills.trees.CombatSkillTree;
-import com.jothapunkt.spigot.raftcraft.skills.trees.SkillTree;
+import com.jothapunkt.spigot.raftcraft.skills.trees.PerkTree;
 
 
 public class CommandSkilltree implements CommandExecutor {
-    protected List<SkillTree> skilltrees = List.of(
+    protected List<PerkTree> skilltrees = List.of(
         new CombatSkillTree()
     );
 
@@ -32,9 +32,9 @@ public class CommandSkilltree implements CommandExecutor {
         }
 
         if (args.length >= 1) {
-            for (SkillTree tree : skilltrees) {
+            for (PerkTree tree : skilltrees) {
                 if (tree.getName().equalsIgnoreCase(args[0])) {
-                    new SkillTreeGUI(player, tree).show(player);
+                    new PerkTreeGUI(player, tree).show(player);
                     return true;
                 }
             }

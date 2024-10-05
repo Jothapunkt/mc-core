@@ -2,17 +2,15 @@ package com.jothapunkt.spigot.raftcraft.skills.trees;
 
 import java.util.List;
 
-import com.jothapunkt.spigot.raftcraft.types.Stat;
-
 import net.md_5.bungee.api.ChatColor;
 
-public class CombatSkillTree extends PerkTree {
-    public CombatSkillTree() {
-        name = "Combat";
+public class DiggingSkillTree extends PerkTree {
+    public DiggingSkillTree() {
+        name = "Digging";
 
         node(2, new Perk(
-                "Thick Skin",
-                (Integer level) -> List.of(ChatColor.GRAY + "Grants " + ChatColor.GOLD + ((level + 1) * 10) + " " + Stat.ARMOR.getLongName())
+                "Speedy Digger",
+                (Integer level) -> List.of("Grants " + ChatColor.GOLD + ((level + 1) * 10) + " Digging Speed")
             ).setLevelCosts(List.of(
                 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1, 1, 1, 1, 1
